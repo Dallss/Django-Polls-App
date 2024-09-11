@@ -27,11 +27,16 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# sileoo
+SILEO_API_FALLBACK_VERSION = 'v1'
+SILEO_ALLOWED_VERSIONS = ['v1']
+API_MIDDLEWARE = []
 
 # Application definition
 
 INSTALLED_APPS = [
     'polls.apps.PollsConfig',
+    'sileo',
     
     'django.contrib.admin',
     'django.contrib.auth',
