@@ -26,6 +26,10 @@ SECRET_KEY = 'django-insecure-7ld=vp52%$-^pc!2h67=-5e$^5%#+)@-#m=gfb*=lw^a86!35=
 DEBUG = True
 
 ALLOWED_HOSTS = []
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+]
+CORS_ALLOW_ALL_ORIGINS = True
 
 # sileoo
 SILEO_API_FALLBACK_VERSION = 'v1'
@@ -37,7 +41,8 @@ API_MIDDLEWARE = []
 INSTALLED_APPS = [
     'polls.apps.PollsConfig',
     'sileo',
-    
+    'corsheaders',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,6 +52,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

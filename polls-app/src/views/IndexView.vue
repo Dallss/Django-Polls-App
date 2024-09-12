@@ -3,7 +3,7 @@
     <h1>Polls</h1>
     <ul>
       <li v-for="poll in polls" :key="poll.id">
-        <RouterLink :to="{ name: 'poll-detail', params: { id: poll.id } }">
+        <RouterLink :to="{ name: 'poll-detail', params: { id: poll.pk } }">
           {{ poll.question_text }}
         </RouterLink>
       </li>
@@ -12,31 +12,31 @@
 </template>
 
 <script>
-import axios from '../axios'
-
+import sileo from 'sileo'
+const Question = new sileo.Model('polls', 'questions')
 
 export default {
   data() {
     return {
       polls: []
-    };
+    }
   },
   mounted() {
-    console.log('IndexView component has been mounted.');
-  },
-  created() {
-    this.fetchQuestions();
+    this.fetchQuestions()
+    console.log('IndexView component has been mounted.')
+    console.log(this.polls)
   },
   methods: {
-    async fetchQuestions(){
-      try{
-        const response = await axios.get('http://127.0.0.1:8000/polls/question/');
-        this.polls = response.data;
-      }catch (error){
-        console.error('Error in fetching Questions', error);
+    async fetchQuestions() {
+      try {
+        const data = await Question.objects.filter()
+        this.polls = data
+        console.log('Finished fetchingg: ')
+        console.log(this.polls)
+      } catch (error) {
+        console.error('Error in fetching Questions', error)
       }
     }
   }
 }
 </script>
-

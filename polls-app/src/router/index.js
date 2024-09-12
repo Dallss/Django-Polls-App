@@ -10,11 +10,11 @@ const router = createRouter({
       name: 'index',
       component: IndexView
     },
-    { 
-      path: '/poll/:id', 
-      name: 'poll-detail', 
-      component: PollView, 
-      props: true 
+    {
+      path: '/poll/:id',
+      name: 'poll-detail',
+      component: PollView,
+      props: true
     }
   ]
 })
