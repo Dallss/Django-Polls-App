@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Polls</h1>
+    <h1>All Questions</h1>
     <ul>
       <li v-for="poll in polls" :key="poll.id">
         <RouterLink :to="{ name: 'poll-detail', params: { id: poll.pk } }">
@@ -8,6 +8,8 @@
         </RouterLink>
       </li>
     </ul>
+
+    <router-link :to="{ name: 'add-new' }">Add New Question</router-link>
   </div>
 </template>
 

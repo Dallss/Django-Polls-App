@@ -10,3 +10,10 @@ class QuestionForm(ModelForm):
             'question_text',
             'pub_date'
         ]
+
+class ChoiceForm(ModelForm):
+    class Meta:
+        model = Choice
+        fields = [
+            'votes'
+        ]
