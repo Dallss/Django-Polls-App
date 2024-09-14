@@ -15,5 +15,7 @@ class ChoiceForm(ModelForm):
     class Meta:
         model = Choice
         fields = [
-            'votes'
+            'choice_text',
+            'votes',
+            'question'
         ]

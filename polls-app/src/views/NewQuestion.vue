@@ -36,7 +36,10 @@ export default {
             console.log('Something went wrong!')
             console.log(xhr)
           })
-        this.$router.push('/')
+          this.$router.push('/').then(() => {
+          window.location.reload();
+});
+
       }
     },
     getCurrentDate() {
