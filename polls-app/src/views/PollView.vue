@@ -3,8 +3,8 @@
     <h1>{{ question.question_text }}</h1>
     <ul>
       <div v-for="choice in question.choices" :key="choice.pk">
-        <input type="radio" name="choices" :value="choice.pk" v-model="selectedChoice" />
-        <label>{{ choice.choice_text }} (Votes: {{ choice.votes }}) </label>
+        <input class="radio" type="radio" name="choices" :value="choice.pk" v-model="selectedChoice" />
+        <label>{{ choice.choice_text }} <span class="voteCount">(Votes: {{ choice.votes }})</span> </label>
       </div>
     </ul>
 
@@ -17,8 +17,7 @@
 
     <br /><br />
     <button @click="deleteQuestion()">Delete Question</button>
-    <br /><br />
-    <button @click="editQuestion()">Edit Question</button>
+   
   </div>
 </template>
 
@@ -84,7 +83,7 @@ export default {
         console.log('Success adding choice')
 
         this.newChoice = ''
-        this.question.choices.push(formData)
+        this.fetchData()
       } catch (error) {
         console.error('Error adding choice:', error)
         alert('Failed to add choice.')
@@ -100,3 +99,12 @@ export default {
   }
 }
 </script>
+
+<style>
+  .radio{
+    margin: 8px;
+  }
+  .voteCount{
+    color: rgb(66, 198, 66);
+  }
+</style>
